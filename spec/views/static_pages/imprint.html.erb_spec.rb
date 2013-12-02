@@ -1,5 +1,13 @@
 require 'spec_helper'
 
-describe "static_pages/imprint.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe "Static pages" do
+
+  describe "Imprint" do
+
+    it "should have the content 'Impressum'" do
+      visit '/static_pages/imprint'
+      expect(page).to have_content('Impressum')
+    end
+  end
 end
+

@@ -1,5 +1,12 @@
 require 'spec_helper'
 
-describe "static_pages/boat.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe "Static pages" do
+
+  describe "Boat page" do
+
+    it "should have the content 'Boot'" do
+      visit '/static_pages/boat'
+      expect(page).to have_content('Boot')
+    end
+  end
 end
