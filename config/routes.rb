@@ -1,4 +1,6 @@
 SolarExplorer::Application.routes.draw do
+  resources :admins
+
   get "static_pages/home"
   get "static_pages/imprint"
   get "static_pages/boat"

@@ -33,4 +33,7 @@ SolarExplorer::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # In testing, passwords should not take long
+  ActiveModel::SecurePassword.min_cost = true
 end
