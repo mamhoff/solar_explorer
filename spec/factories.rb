@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :admin do
+  factory :user do
     name     "Martin Meyerhoff"
     email    "martin@example.com"
     password "foobar"

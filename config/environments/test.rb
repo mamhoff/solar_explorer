@@ -36,4 +36,9 @@ SolarExplorer::Application.configure do
 
   # In testing, passwords should not take long
   ActiveModel::SecurePassword.min_cost = true
+
+
+  # Lets do something nice for devise
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
 end
