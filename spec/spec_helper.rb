@@ -52,6 +52,10 @@ Spork.prefork do
     # include Capybara Syntax
 
     config.include Capybara::DSL
+
+    # include devise helpers
+    config.include Devise::TestHelpers, :type => :controller
+    
   end
 end
 
