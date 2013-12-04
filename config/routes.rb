@@ -1,14 +1,14 @@
 SolarExplorer::Application.routes.draw do
   get "users/show"
   get "users/index"
+
   get "roles/create"
   get "roles/update"
   get "roles/new"
   get "roles/destroy"
   get "roles/show"
   get "roles/index"
-  devise_for :users
- # devise_for :users
+  devise_for :users, :controllers => { registrations: 'users/registrations'}
   root to: "static_pages#home"
 
   get "static_pages/home"
