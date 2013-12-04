@@ -12,12 +12,19 @@ describe Role do
   	describe "it should show a users roles" do
   		let(:user_id) do
   			user = FactoryGirl.create(:user)
-  			user.roles << role
+  			user.set_role(role)
   			user.save
   			user.id
   		end
 
   		specify { expect(User.find(user_id).roles).to eq [role] }
+  		specify { expect(role.users).to eq [User.find(user_id)] }
   	end
-end
+
+  	describe "creating a role with a name that already exists" do
+  		let(:duplicate_role) {Role.new(name: role.name)}
+  		specify { expect(duplicate_role).not_to be_valid }
+  	end
+
+end		
 

@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   end
 
   def set_role(role)
+  	if Role.find(role.id)
+  		self.roles << role  		
   end
 
 
