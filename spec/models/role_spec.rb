@@ -5,7 +5,7 @@ describe Role do
   	
   	subject { role }
 
-  	it {should respond_to(:name) }
+  	it { should respond_to(:name) }
 
   	it { should respond_to(:users) }
 

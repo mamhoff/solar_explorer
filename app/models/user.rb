@@ -1,4 +1,12 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable
+
+
+
   has_and_belongs_to_many :roles 
 
   before_create :create_remember_token
@@ -12,12 +20,6 @@ class User < ActiveRecord::Base
 
 
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable
-
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -28,7 +30,8 @@ class User < ActiveRecord::Base
 
   def set_role(role)
   	if Role.find(role.id)
-  		self.roles << role  		
+  		self.roles << role  
+      end		
   end
 
 
