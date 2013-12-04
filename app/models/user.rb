@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :roles, through: :users_roles 
+  has_and_belongs_to_many :roles 
 
   before_create :create_remember_token
   before_save { self.email = email.downcase }

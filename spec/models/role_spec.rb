@@ -10,13 +10,14 @@ describe Role do
   	it { should respond_to(:users) }
 
   	describe "it should show a users roles" do
-  		let(:user) do
+  		let(:user_id) do
   			user = FactoryGirl.create(:user)
-  			user.set_role(role)
-  			user.roles
+  			user.roles << role
+  			user.save
+  			user.id
   		end
 
-  		specify { expect(user.roles).to eq [role] }
+  		specify { expect(User.find(user_id).roles).to eq [role] }
   	end
 end
 
