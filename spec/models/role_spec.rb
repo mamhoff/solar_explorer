@@ -7,7 +7,7 @@ describe Role do
 
   	it {should respond_to(:name) }
 
-  	it { should respond_to(:roles) }
+  	it { should respond_to(:users) }
 
   	describe "it should show a users roles" do
   		let(:user) do
@@ -18,5 +18,5 @@ describe Role do
 
   		specify { expect(user.roles).to eq [role] }
   	end
-  end
 end
+

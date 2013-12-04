@@ -1,4 +1,16 @@
 SolarExplorer::Application.routes.draw do
+  get "roles/create"
+  get "roles/update"
+  get "roles/new"
+  get "roles/destroy"
+  get "roles/show"
+  get "roles/index"
+  get "user/update"
+  get "user/create"
+  get "user/destroy"
+  get "user/new"
+  get "user/show"
+  get "user/index"
   devise_for :users
  # devise_for :users
   root to: "static_pages#home"
