@@ -27,7 +27,6 @@ class User < ActiveRecord::Base
   end
 
   def set_role(role)
-  	User.build_role(role)
   end
 
 
