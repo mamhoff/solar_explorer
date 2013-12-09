@@ -29,11 +29,20 @@ class User < ActiveRecord::Base
   end
 
   def set_role(role)
-  	if Role.find(role.id)
-  		self.roles << role  
+    role_obj = Role.find_by(name: role)
+  	if role_obj
+  		self.roles << role_obj  
       end		
   end
 
+  def signed_in_as?(role_str)
+    role_obj = Role.find_by(name: role_str)
+    if role_obj.name == role_str
+      true
+    else
+      false
+    end
+  end
 
 
   private

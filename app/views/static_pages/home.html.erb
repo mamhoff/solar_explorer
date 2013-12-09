@@ -3,9 +3,11 @@
 	<h1>Hauptseite</h1>
 </div>
 <p>
-  Schauen sie mal, was für ein Boot...
+  Schauen sie mal, was für ein <%= link_to "Boot", static_pages_boat_path %>...
 </p>
-<ul>
-<li><%= link_to "Sign up", new_user_registration_path, html_options: {class: 'btn'} %></li>
-<li><%= link_to "Sign in", new_user_session_path, html_options: {class: 'btn' } %></li>
-</ul>
+
+<% if signed_in? %>
+<p> <%= link_to "Instruktionen", static_pages_admin_instructions_path %> für Admins </p>
+<% end %>
+
+<p> <%= link_to "Verbotene Früchte", static_pages_admin_instructions_path %> für Admins </p>

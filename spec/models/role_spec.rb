@@ -12,7 +12,7 @@ describe Role do
   	describe "it should show a users roles" do
   		let(:user_id) do
   			user = FactoryGirl.create(:user)
-  			user.set_role(role)
+  			user.set_role(role.name)
   			user.save
   			user.id
   		end
