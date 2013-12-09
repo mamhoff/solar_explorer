@@ -3,11 +3,9 @@ require 'spec_helper'
 describe "Static pages" do
 
   describe "Admin Instructions page" do      
-      let(:user) { FactoryGirl.create(:user) }
-      let(:admin_role) {FactoryGirl.create(:role, name: "Admin")}
+      let(:user) { FactoryGirl.create(:user, :admin) }
 
       before do
-        user.roles << admin_role
         user.confirmed_at = Time.now
         user.save!
         visit new_user_session_path

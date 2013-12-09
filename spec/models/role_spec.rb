@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Role do
-	let(:role) {FactoryGirl.create(:role) }
+	let(:role) {Role.find_by(name: "Admin") }
   	
   	subject { role }
 
@@ -11,8 +11,7 @@ describe Role do
 
   	describe "it should show a users roles" do
   		let(:user_id) do
-  			user = FactoryGirl.create(:user)
-  			user.set_role(role.name)
+  			user = FactoryGirl.create(:user, :admin)
   			user.save
   			user.id
   		end
