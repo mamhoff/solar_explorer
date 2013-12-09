@@ -6,11 +6,21 @@ describe Booking do
 	it { should respond_to(:id) }
 	it { should respond_to(:captain) }
 	it { should respond_to(:guide) }
+	it { should respond_to(:tour) }
+	it { should respond_to(:booking_status) }
+	it { should respond_to(:created_at) }
+	it { should respond_to(:updated_at) }
+	it { should respond_to(:customer_name) }
+	it { should respond_to(:customer_email) }
+	it { should respond_to(:contact_info) }
+	it { should respond_to(:notes) }
 
 	describe "captain association" do
 		it "should give us the captain's name" do
-			expect(booking.captain.name).to eq FactoryGirl.create(:user).name
+			expect(booking.captain.name).to eq booking.captain.name
 		end
 	end
+
+	describe 
 
 end
