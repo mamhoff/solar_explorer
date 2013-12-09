@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209140642) do
+ActiveRecord::Schema.define(version: 20131209151725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,5 +93,15 @@ ActiveRecord::Schema.define(version: 20131209140642) do
   add_index "users", ["name"], name: "index_users_on_name", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "wishes", force: true do |t|
+    t.datetime "fromtime"
+    t.datetime "totime"
+    t.integer  "booking_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wishes", ["booking_id"], name: "index_wishes_on_booking_id", using: :btree
 
 end

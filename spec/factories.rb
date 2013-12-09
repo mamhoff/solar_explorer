@@ -23,15 +23,31 @@ FactoryGirl.define do
   end
 
 	factory :booking do
-		captain	{ FactoryGirl.create(:user, :captain) }
-		guide 	{ FactoryGirl.create(:user, :guide) }
-		boat	{ FactoryGirl.create(:boat) } # these need to be changed later
-		tour	{ FactoryGirl.create(:tour) } 
-		customer_name "Cutomer 1"
+		captain					nil
+		guide 					nil
+		boat						nil
+		tour						nil 
+		customer_name 	"Cutomer 1"
 		sequence(:customer_email ) { |n| "customer-#{n}@example.com" }
-		contact_info "Call us on +1 1234 434"
-		notes "We are vegans"
-		booking_status { FactoryGirl.create(:booking_status) }
+		contact_info 		"Call us on +1 1234 434"
+		notes 					"We are vegans"
+		booking_status { FactoryGirl.create(:booking_status, name: "prereserved") }
+
+		trait :with_captain do
+			captain { FactoryGirl.create(:user, :captain) }
+		end
+
+		trait :with_guide do
+			guide { FactoryGirl.create(:user, :guide) }
+		end
+
+		trait :with_boat do
+			boat { FactoryGirl.create(:boat) }
+		end
+
+		trait :with_tour do
+			tour { FactoryGirl.create(:tour) } 
+		end
 	end
 
 	factory :boat do
@@ -44,6 +60,11 @@ FactoryGirl.define do
 
 	factory :booking_status do
 		name 	"prereserved"
+	end
+
+	factory :wish do
+		fromtime	Time.now - 1.days
+		totime		Time.now
 	end
  
 end

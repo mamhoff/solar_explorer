@@ -16,11 +16,13 @@ describe Booking do
 	it { should respond_to(:notes) }
 
 	describe "captain association" do
-		it "should give us the captain's name" do
-			expect(booking.captain.name).to eq booking.captain.name
+		it "no captain is alright" do
+			booking.captain = nil
+			booking.save!		
+			expect(booking.captain).to eq nil
 		end
 	end
 
-	describe 
+	
 
 end
