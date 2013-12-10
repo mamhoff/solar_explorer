@@ -3,9 +3,11 @@
 <% @tours.each do |tour| %>
 	<div class="well">
 	<p> <%= tour.name %> 
-	<%= link_to "delete", tour, method: :delete,  
-							data: {confirm: "Are you sure?"},
-							title: tour.name %>
+		<% if user_signed_in? && current_user.has_role?('admin') %>
+		<%= link_to "delete", tour, method: :delete,  
+								data: {confirm: "Are you sure?"},
+								title: tour.name %>
+		<% end %>
 	</p>
 	</div>
 <% end %>

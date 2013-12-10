@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe "roles/index.html.erb" do
-  before { visit tours_path }
+  before do
+      FactoryGirl.create(:tour)
+      visit tours_path
+    end
+    
   it "should have the word tour index" do
   	expect(page).to have_content("Tour index")
   end
@@ -13,7 +17,6 @@ describe "roles/index.html.erb" do
   describe "signed in as admin" do
 
     before do 
-    FactoryGirl.create(:tour)
     admin = FactoryGirl.create(:user, :admin)
       sign_in admin
       visit tours_path
