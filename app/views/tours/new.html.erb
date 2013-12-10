@@ -1,0 +1,13 @@
+<h1>Create a new tour</h1>
+<p>Only for admins</p>
+<%= @signed_in %>
+<div class="row">
+	<div class="col-md-6 offset-md-3">
+	<%= form_for @tour do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		<%= f.submit "Save tour" %>
+	<% end %>
+	</div>
+</div>
+

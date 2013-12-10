@@ -1,0 +1,13 @@
+<h1>Tour index</h1>
+<div class="col-md-6 col-md-offset-3">
+<% @tours.each do |tour| %>
+	<div class="well">
+	<p> <%= tour.name %> 
+	<%= link_to "delete", tour, method: :delete,  
+							data: {confirm: "Are you sure?"},
+							title: tour.name %>
+	</p>
+	</div>
+<% end %>
+<%= link_to "Create tour", new_tour_path %>
+</div>
