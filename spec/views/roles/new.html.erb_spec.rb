@@ -30,6 +30,16 @@ describe "roles/new.html.erb" do
 		end
 
 		describe "with valid information" do
+			before do
+				visit new_role_path
+				fill_in "Name", with: "New Role"
+			end
+
+			specify do
+					expect do
+					click_button "Save role"
+				end.to change(Role, :count).by(1)
+			end
 		 
 		end
 	end

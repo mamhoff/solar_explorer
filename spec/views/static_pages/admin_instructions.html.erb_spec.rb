@@ -14,9 +14,5 @@ describe "Static pages" do
       expect(page).to have_content('Admin instructions')
     end
     
-    it "should have a link to creating a role" do
-      visit '/static_pages/admin_instructions'
-      expect(page).to have_link("Create Role")
-    end
-  end
+   end
 end

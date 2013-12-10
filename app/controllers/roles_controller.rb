@@ -9,10 +9,21 @@ class RolesController < ApplicationController
 		@role = Role.new(role_params)
 		if @role.save
 			flash[:success] = "Role #{@role.name} created."
+			redirect_to roles_path
 		else
 			flash[:error] = "The name of your role is too short."
 			render 'new'
 		end
+	end
+
+	def index
+		@roles = Role.all
+	end
+
+	def destroy
+		Role.find_by(id: params[:id]).destroy
+		flash[:success] = "Role deleted"
+		redirect_to roles_path
 	end
 
 	private
