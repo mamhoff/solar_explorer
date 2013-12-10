@@ -3,8 +3,6 @@ require 'spec_helper'
 describe "roles/new.html.erb" do
 	let(:user) { FactoryGirl.create(:user, :admin)}
 	before do 
-    user.confirmed_at = Time.now
-    user.save!
     sign_in user
     visit new_role_path
 	end

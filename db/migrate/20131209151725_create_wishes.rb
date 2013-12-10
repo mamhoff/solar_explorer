@@ -1,6 +1,5 @@
 class CreateWishes < ActiveRecord::Migration
   def change
-  	drop_table :wishes
     create_table :wishes do |t|
       t.datetime :fromtime
       t.datetime :totime

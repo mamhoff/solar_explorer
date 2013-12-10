@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20131209151725) do
     t.datetime "updated_at"
   end
 
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
   create_table "roles_users", force: true do |t|
     t.integer "user_id"
     t.integer "role_id"

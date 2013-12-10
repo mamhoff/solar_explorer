@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def has_role?(*roles)
-    roles.each { |role| role = role.downcase } 
+    roles.map! { |role| role.downcase } 
     self.roles.where(name: roles).present?
   end
 
