@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Tour do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:tour) { FactoryGirl.create(:tour) }
+
+  subject { tour }
+
+  it { should respond_to(:name) } 
 end
