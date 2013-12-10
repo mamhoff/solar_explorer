@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
   	def signed_in_with_role_admin
   		authenticate_user!
   		redirect_to new_user_session_path, notice: "You are not an admin user" \
-  			unless current_user.signed_in_as?("Admin")
+  			unless current_user.has_role?("Admin")
   	end
 
 end

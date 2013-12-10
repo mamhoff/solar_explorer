@@ -29,19 +29,24 @@ class User < ActiveRecord::Base
   end
 
   def set_role(role)
+    role = role.downcase
     role_obj = Role.find_by(name: role)
   	if role_obj
   		self.roles << role_obj  
-      end		
+    end		
   end
 
-  def signed_in_as?(role_str)
-    role_obj = Role.find_by(name: role_str)
-    if role_obj.name == role_str
-      true
-    else
-      false
+  def unset_role(role)
+    role = role.downcase
+    role_obj = Role.find_by(name: role)
+    if role_obj
+      self.roles.delete(role_obj)
     end
+  end
+
+  def has_role?(*roles)
+    roles.each { |role| role = role.downcase } 
+    self.roles.where(name: roles).present?
   end
 
 

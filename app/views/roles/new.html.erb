@@ -1,2 +1,13 @@
-<h1>Roles#new</h1>
-<p>Find me in app/views/roles/new.html.erb</p>
+<h1>Create a new role</h1>
+<p>Only for admins</p>
+<%= @signed_in %>
+<div class="row">
+	<div class="col-md-6 offset-md-3">
+	<%= form_for @role do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		<%= f.submit "Save role" %>
+	<% end %>
+	</div>
+</div>
+

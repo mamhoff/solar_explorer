@@ -1,19 +1,29 @@
 class RolesController < ApplicationController
-  def create
-  end
+  before_filter :signed_in_with_role_admin
+	
+	def new
+		@role = Role.new
+	end
 
-  def update
-  end
+	def create
+		@role = Role.new(role_params)
+		if @role.save
+			flash[:success] = "Role #{@role.name} created."
+		else
+			flash[:error] = "The name of your role is too short."
+			render 'new'
+		end
+	end
 
-  def new
-  end
+	private
+		def role_params
+			params.require(:role).permit(:name)
+		end
 
-  def destroy
-  end
+  	def signed_in_with_role_admin
+  		authenticate_user!
+  		redirect_to new_user_session_path, notice: "You are not an admin user" \
+  			unless current_user.has_role?("Admin")
+  	end
 
-  def show
-  end
-
-  def index
-  end
 end

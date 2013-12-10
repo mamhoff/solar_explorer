@@ -16,10 +16,12 @@ FactoryGirl.define do
     trait :captain do 
     	before(:create) { |user| user.set_role("Captain") }
     end
+
+    confirmed_at	Time.now
 	end
 
   factory :role do
-  	name	"Captain"
+  	name	"Some name"
   end
 
 	factory :booking do

@@ -91,12 +91,24 @@ describe User do
 
   describe "FactoryGirl can create an Admin at will" do
   	let(:admin) { FactoryGirl.create(:user, :admin) }
-  	specify { expect(admin.roles).to eq [Role.find_by(name: "Admin")] }
+  	specify { expect(admin.roles).to eq [Role.find_by(name: "admin")] }
   end
 
-   describe "FactoryGirl can create aa Guide at will" do
-  	let(:guide) { FactoryGirl.create(:user, :guide) }
-  	specify { expect(guide.roles).to eq [Role.find_by(name: "Guide")] }
+   it "FactoryGirl can create aa Guide at will" do
+  	 guide = FactoryGirl.create(:user, :guide) 
+  	pp guide.roles 
+  		expect(guide.has_role?("guide")).to eq true  
+  	
+  end
+
+  describe "unsetting a role" do
+  	let(:admin) { admin = FactoryGirl.create(:user, :admin) }
+  	before do 
+  		admin.unset_role("Admin")
+  	end
+  	specify do
+  		expect(admin.roles).not_to eq [Role.find_by(name: "Admin")]
+  	end
   end
 
 end
