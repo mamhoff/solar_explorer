@@ -2,7 +2,7 @@
 <div class="col-md-6 col-md-offset-3">
 <% @tours.each do |tour| %>
 	<div class="well">
-	<p> <%= tour.name %> 
+	<p> <%= tour.name %> <%= link_to "Buchen", new_wish_path %>
 		<% if user_signed_in? && current_user.has_role?('admin') %>
 		<%= link_to "delete", tour, method: :delete,  
 								data: {confirm: "Are you sure?"},

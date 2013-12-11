@@ -14,6 +14,10 @@ describe "roles/index.html.erb" do
     expect(page).not_to have_link("delete")
   end
 
+  it "should have links that allow to make a wish" do
+    expect(page).to have_link("Buchen")
+  end
+
   describe "signed in as admin" do
 
     before do 
