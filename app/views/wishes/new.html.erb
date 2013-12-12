@@ -1,0 +1,13 @@
+<% provide :title, "Buchen" %>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h1>Tour "<%= @tour %>" buchen </h1>
+		<%= form_for @wish, url: "#"  do |f| %>
+			<%= f.label :fromtime  %>
+			<%= datetime_field(:wish, :fromtime) %>
+
+			<%= f.label :totime %>
+			<%= datetime_field(:wish, :totime) %>
+
+		<%= f.submit "submit" %>
+		<% end %>
