@@ -26,6 +26,12 @@ describe "roles/index.html.erb" do
     expect(page).to have_link("Create Role")
   end
 
+  it "should not have bootstrap columns without bootstrap rows as parents" do
+    expect(page).not_to have_selector(:xpath, \
+      "//div[contains(@class, 'col') and parent::*[not(contains(@class, 'row'))]]")
+  end
+
+
   describe "clicking a delete link" do
   
   	it "should decrease the role count by 1"	do

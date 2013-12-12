@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     name     "Example User"
-    sequence(:email) { |n| "user-#{n}@example.com" }
+    email  "user-80@example.com" 
     password "foobar"
     password_confirmation "foobar"
 
@@ -57,7 +57,7 @@ FactoryGirl.define do
 	end
 
 	factory :tour do
-		name 	"First Tour"
+		sequence(:name) { |n| "Tour #{n}" }
 	end
 
 	factory :booking_status do

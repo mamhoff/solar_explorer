@@ -2,6 +2,7 @@ SolarExplorer::Application.routes.draw do
   get "users/show"
   get "users/index"
 
+  resources :wishes, only: [:new]
   resources :roles, only: [:new, :create, :index, :destroy]
   resources :tours, only: [:new, :create, :destroy, :index, :show]
   devise_for :users, :controllers => { registrations: 'users/registrations'}

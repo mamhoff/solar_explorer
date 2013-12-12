@@ -79,7 +79,11 @@ describe User do
    describe "email address with mixed case" do
     mixed_case_email = "MaRTIn@ExAMPle.CoM"
       it "should be saved as all lower-case" do
-      funny_user = FactoryGirl.create(:user, email: mixed_case_email)
+      funny_user = FactoryGirl.create(:user)
+      funny_user.email =  mixed_case_email
+      #require 'pry'; binding.pry
+      funny_user.confirmed_at = Time.now
+      funny_user.save
       expect(funny_user.reload.email).to eq mixed_case_email.downcase
     end
   end
@@ -94,11 +98,9 @@ describe User do
   	specify { expect(admin.roles).to eq [Role.find_by(name: "admin")] }
   end
 
-   it "FactoryGirl can create aa Guide at will" do
-  	 guide = FactoryGirl.create(:user, :guide) 
-  	pp guide.roles 
-  		expect(guide.has_role?("guide")).to eq true  
-  	
+  it "FactoryGirl can create a Guide at will" do
+	guide = FactoryGirl.create(:user, :guide) 
+	expect(guide.has_role?("guide")).to eq true
   end
 
   describe "unsetting a role" do

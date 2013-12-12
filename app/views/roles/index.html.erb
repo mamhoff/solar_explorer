@@ -1,14 +1,12 @@
 <h1>Role index</h1>
-<div class="col-md-6 col-md-offset-3">
-<% @roles.each do |role| %>
-	<div class="well">
-	<p> <%= role.name %> 
-	<%= link_to "delete", role, method: :delete,  
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= link_to "Create Role", new_role_path %> <br/>
+		<% @roles.each do |role| %>
+			<p> <%= role.name %> 
+				<%= link_to "delete", role, method: :delete,  
 							data: {confirm: "Are you sure?"},
-							title: role.name %>
-
-	</p>
+							title: role.name %>	</p>
+		<% end %>
 	</div>
-<% end %>
-<%= link_to "Create Role", new_role_path %>
 </div>

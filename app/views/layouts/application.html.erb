@@ -8,19 +8,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <div class="container well">
-     <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
+    <header class="row row-1">
       <ul>
-
       <% if signed_in? %>
-<li><%= link_to "Sign out", destroy_user_session_path, html_options: {class: 'btn' }, method: "delete" %></li>
+        <li><%= link_to "Sign out", destroy_user_session_path, class: 'btn', method: "delete" %></li>
       <% else %>
-<li><%= link_to "Sign up", new_user_registration_path, html_options: {class: 'btn'} %></li>
-<li><%= link_to "Sign in", new_user_session_path, html_options: {class: 'btn' } %></li>
-</ul>
+        <li><%= link_to "Sign up", new_user_registration_path, class: 'btn' %></li>
+        <li><%= link_to "Sign in", new_user_session_path, class: 'btn' %></li>
       <% end %>
+      </ul>
+    </header>
+    <div class="container well">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
       <%= yield %>
       <%= debug(params) if Rails.env.development? %>
     </div>
